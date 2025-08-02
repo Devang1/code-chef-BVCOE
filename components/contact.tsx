@@ -24,19 +24,20 @@ export function Contact() {
 
     try {
       // Initialize EmailJS (replace with your public key)
-      await emailjs.init('YOUR_EMAILJS_PUBLIC_KEY')
+      // await emailjs.init('5v2mWezpf_W1OOZ8W')
 
       // Send email (replace service and template IDs)
       await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_email: 'devangshukla119@gmail.com'
-        }
+          // to_email: 'devangshukla119@gmail.com'
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       )
 
       setIsSubmitted(true)

@@ -1,19 +1,19 @@
 "use client"
-
+import { EventPhotosCarousel } from "./EventPhotosCarousel"
 import { motion } from "framer-motion"
 import { Calendar, Users, Trophy, Coffee, Code, Gamepad2, Award, Star } from "lucide-react"
-import { useState } from "react"
+import { useState} from "react"
 
 export function PastEvents() {
   const [activeCategory, setActiveCategory] = useState<"technical" | "non-technical">("technical")
 
   const flagshipEvent = {
-    title: "BVEST.XI",
-    date: "October 19-20, 2024",
-    participants: 500,
-    description: "Our annual flagship tech fest featuring competitions, workshops, and keynote speakers from top tech companies. A 2-day extravaganza celebrating innovation and technology.",
+    title: "Technotic 2.0",
+    date: "March 16 & 18, 2025",
+    participants: "100+",
+    description: "A high-energy coding competition with Debugging, Aptitude, and DSA rounds, testing speed, logic, and teamwork under pressure.",
     icon: <Star className="w-4 h-4 md:w-5 md:h-5" />,
-    achievements: ["20+ Events", "₹50,000 Prize Pool", "Industry Leaders", "Hackathon", "Networking"],
+    achievements: ["High-Intensity 3-Round Showdown", "₹5,000 Prize Pool", "Real-world Simulation", "Multi-skill Evaluation"],
     color: "from-yellow-500 to-amber-500",
     bgColor: "from-yellow-900/20 to-amber-900/20",
   }
@@ -158,6 +158,7 @@ export function PastEvents() {
   )
 
   return (
+    <>
     <section
       id="events"
       className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-[#121212] relative overflow-hidden"
@@ -287,5 +288,7 @@ export function PastEvents() {
         </motion.div>
       </div>
     </section>
+    <EventPhotosCarousel />
+    </>
   )
 }
