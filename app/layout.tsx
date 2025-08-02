@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: 'CodeChef BVCOE',
   description: 'Official website of CodeChef Chapter at BVCOE. Explore contests, events, and coding resources.',
   keywords: ['CodeChef', 'BVCOE', 'Competitive Programming', 'Coding Club', 'DSA', 'Contests'],
-  authors: [{ name: 'CodeChef BVCOE Team', url: 'https://codechefbvcoe.com' }],
+  authors: [{ name: 'CodeChef BVCOE Team', url: 'https://codechefbvcoe.vercel.app' }],
   creator: 'CodeChef BVCOE',
-  metadataBase: new URL('https://codechefbvcoe.com'),
+  metadataBase: new URL('https://codechefbvcoe.vercel.app'),
   openGraph: {
     title: 'CodeChef BVCOE',
     description: 'Explore CodeChef BVCOE\'s contests, events, and coding resources.',
-    url: 'https://codechefbvcoe.com',
+    url: 'https://codechefbvcoe.vercel.app',
     siteName: 'CodeChef BVCOE',
     images: [
       {
