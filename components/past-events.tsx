@@ -21,7 +21,7 @@ export function PastEvents() {
   const technicalEvents = [
     {
       title: "Idea Roulette at BVEST.XI",
-      date: "October 24 , 2024",
+      date: "October 19 , 2024",
       participants: 232,
       description: "Innovation challenge on Oct 19, 2024, with ₹8,000 prize pool, rewarding Best Tech and Most Novel Idea. A day of rapid ideas and collaboration.",
       icon: <Code className="w-4 h-4 md:w-5 md:h-5" />,

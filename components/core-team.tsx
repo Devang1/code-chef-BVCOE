@@ -41,7 +41,7 @@ export function CoreTeam() {
       color: "from-green-500 to-teal-500",
     },
     {
-      name: "Rahul Goyal",
+      name: "Rahul",
       role: "Technical Lead",
       image: "/technical.jpg?height=200&width=200",
       bio: "Full-stack developer and algorithm expert, specializing in optimization problems.",
