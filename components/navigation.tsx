@@ -19,12 +19,14 @@ export function Navigation() {
   ]
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {  
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 z-50">
@@ -39,7 +41,6 @@ export function Navigation() {
                 height={0} // This tells Next.js to infer height
                 className="h-auto opacity-60"
               />
-            <span className="text-lg md:text-xl font-bold font-poppins">CodeChef BVCOE Chapter</span>
           </Link>
 
           {/* Desktop Navigation */}

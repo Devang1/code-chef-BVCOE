@@ -14,14 +14,14 @@ export function EventPhotosCarousel() {
 
   // Sample event photos - replace with your actual images
   const eventPhotos = [
-    { id: 1, src: '/event/techtonic.jpg', alt: 'Techtonic competition' },
-    { id: 2, src: '/event/idea-roulette.jpg', alt: 'Idea Roulette Event' },
-    { id: 7, src: '/event/idea-roulette1.jpg', alt: 'Idea Roulette Team' },
+    { id: 1, src: '/event/techtonic.jpg', alt: 'Techtonic 2.0' },
+    { id: 2, src: '/event/idea-roulette.jpg', alt: 'Idea Roulette' },
+    { id: 7, src: '/event/idea-roulette1.jpg', alt: 'Idea Roulette' },
     { id: 3, src: '/event/dsa-webinar.jpg', alt: 'DSA Webinar' },
     { id: 4, src: '/event/dataverse.jpg', alt: 'Dataverse workshop' },
     { id: 5, src: '/event/mba-insights.jpg', alt: 'MBA Insights seminar' },
-    { id: 6, src: '/event/ipl-auction.jpg', alt: 'IPL Auction event' },
-    { id: 8, src: '/event/learn-to-create.jpg', alt: 'Learn To Create event' },
+    { id: 6, src: '/event/ipl-auction.jpg', alt: 'IPL Auction' },
+    { id: 8, src: '/event/learn-to-create.jpg', alt: 'Learn To Create' },
   ]
 
   // Calculate the width of the carousel
