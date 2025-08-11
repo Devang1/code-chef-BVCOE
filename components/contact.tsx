@@ -145,13 +145,6 @@ export function Contact() {
                   color: "from-purple-500 to-pink-500",
                   delay: 1.2,
                 },
-                {
-                  icon: <Phone className="w-5 h-5 md:w-6 md:h-6" />,
-                  title: "Phone",
-                  info: "+91 9711541696 \n+91 9718740660",
-                  color: "from-purple-500 to-pink-500",
-                  delay: 1.2,
-                },
               ].map((contact) => (
                 <motion.div
                   key={contact.title}
