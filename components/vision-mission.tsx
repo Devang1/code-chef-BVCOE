@@ -22,14 +22,17 @@ export function VisionMission() {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute top-1/4 right-1/4 w-32 h-32 md:w-64 md:h-64 border border-primary/10 rounded-full"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          className="absolute bottom-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 border border-primary/5 rounded-full"
-        />
+          transition={{
+            duration: 50,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+          className="absolute top-0 left-0 w-full h-full"
+        >
+          <div className="absolute top-1/4 left-1/4 w-1 md:w-2 h-1 md:h-2 bg-primary/30 rounded-full" />
+          <div className="absolute top-3/4 right-1/4 w-0.5 md:w-1 h-0.5 md:h-1 bg-primary/20 rounded-full" />
+          <div className="absolute bottom-1/4 left-3/4 w-1 md:w-1.5 h-1 md:h-1.5 bg-primary/25 rounded-full" />
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

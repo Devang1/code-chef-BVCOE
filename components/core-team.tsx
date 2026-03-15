@@ -1,93 +1,65 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Crown, Github, Linkedin, Mail, Award } from "lucide-react"
-import { useState } from "react"
+import { motion } from "framer-motion";
+import { Crown, Linkedin, Award } from "lucide-react";
+import { useState } from "react";
 
 export function CoreTeam() {
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null)
+  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
 
   const coreMembers = [
     {
-      name: "Tulika Bhatia",
+      name: "Aadarsh Kumar Jha",
       role: "President",
-      image: "/president.jpg?height=200&width=200",
-      bio: "5-star coder on CodeChef with expertise in dynamic programming and graph algorithms.",
-      linkedin: "https://www.linkedin.com/in/tulikabhatia3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      email: "alex@university.edu",
-      achievements: ["ICPC Finalist", "Google Code Jam", "5⭐ CodeChef"],
+      image: "/outreach.jpg?height=200&width=200",
+      linkedin:
+        "https://www.linkedin.com/in/aadarsh-jha-90a801297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       color: "from-yellow-500 to-orange-500",
     },
     {
       name: "Renit Kukreti",
       role: "Vice President",
       image: "/vicePresident.jpg?height=200&width=200",
-      bio: "Competitive programming enthusiast with strong background in number theory and combinatorics.",
-      github: "priyasharma",
       linkedin: "https://www.linkedin.com/in/renit-kukreti-86a395317/",
-      email: "priya@university.edu",
-      achievements: ["ACM ICPC", "CodeForces Expert", "Hackathon Winner"],
       color: "from-purple-500 to-pink-500",
-    },
-    {
-      name: "Pranaya",
-      role: "General Secretary",
-      image: "/generalSecratary.jpg?height=200&width=200",
-      bio: "Passionate about organizing coding competitions and building community engagement.",
-      github: "sarahwilson",
-      linkedin: "https://www.linkedin.com/in/pranaya-wadhwa-0321aa340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      email: "sarah@university.edu",
-      achievements: ["Event Organizer", "Community Builder", "Public Speaker"],
-      color: "from-green-500 to-teal-500",
     },
     {
       name: "Rahul",
       role: "Technical Lead",
       image: "/technical.jpg?height=200&width=200",
-      bio: "Full-stack developer and algorithm expert, specializing in optimization problems.",
-      github: "davidkim",
       linkedin: "https://www.linkedin.com/in/rahulgoyal83789",
-      email: "david@university.edu",
-      achievements: ["Open Source Contributor", "Tech Lead", "Algorithm Expert"],
       color: "from-blue-500 to-cyan-500",
     },
     {
-      name: "Varun Dedha",
+      name: "Richa",
       role: "Event Management Lead",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Passionate about organizing coding competitions and building community engagement.",
-      github: "sarahwilson",
+      image: "/event/Richa.webp?height=200&width=200",
       linkedin: "sarahwilson",
-      email: "sarah@university.edu",
-      achievements: ["Event Organizer", "Community Builder", "Public Speaker"],
       color: "from-green-500 to-teal-500",
     },
     {
       name: "Manasvi",
       role: "Creative Lead",
       image: "/creative.jpg?height=200&width=200",
-      bio: "Passionate about organizing coding competitions and building community engagement.",
-      github: "sarahwilson",
-      linkedin: "https://www.linkedin.com/in/manasvi-k-74024b27a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      email: "sarah@university.edu",
-      achievements: ["Event Organizer", "Community Builder", "Public Speaker"],
+      linkedin:
+        "https://www.linkedin.com/in/manasvi-k-74024b27a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       color: "from-green-500 to-teal-500",
     },
     {
-      name: "Aadarsh Jha",
-      role: "Outreach Lead",
-      image: "/outreach.jpg?height=200&width=200",
-      bio: "Passionate about organizing coding competitions and building community engagement.",
-      github: "sarahwilson",
-      linkedin: "https://www.linkedin.com/in/aadarsh-jha-90a801297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      email: "sarah@university.edu",
-      achievements: ["Event Organizer", "Community Builder", "Public Speaker"],
+      name: "Abhishek Kumar Jha",
+      role: "Sponsorship Lead",
+      image: "/sponsorship/Abhishek.jpg?height=200&width=200",
+      linkedin:
+        "https://www.linkedin.com/in/aadarsh-jha-90a801297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       color: "from-green-500 to-teal-500",
     },
-  ]
+  ];
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-[#121212] relative overflow-hidden">
+    <section
+      id="team"
+      className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-[#121212] relative overflow-hidden"
+    >
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -130,7 +102,9 @@ export function CoreTeam() {
               <Crown className="w-6 h-6 md:w-8 md:h-8 text-yellow-500 animate-bounce-slow" />
             </div>
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-bold font-poppins text-white mb-4 md:mb-6">Core Team</h2>
+          <h2 className="text-3xl md:text-5xl font-bold font-poppins text-white mb-4 md:mb-6">
+            Core Team
+          </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
             Meet the visionary leaders driving our chapter to new heights
           </p>
@@ -152,7 +126,10 @@ export function CoreTeam() {
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl md:rounded-3xl p-4 md:p-6 border border-gray-700 hover:border-primary/50 transition-all duration-500 shadow-2xl hover:shadow-primary/20 h-full">
                 {/* Profile Image */}
                 <div className="relative mb-4 md:mb-6">
-                  <motion.div whileHover={{ scale: 1.1, rotate: 5 }} className="relative mx-auto">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className="relative mx-auto"
+                  >
                     <div
                       className={`w-20 h-20 md:w-24 md:h-24 mx-auto rounded-full overflow-hidden bg-gradient-to-br ${member.color} p-1 shadow-lg`}
                     >
@@ -169,7 +146,7 @@ export function CoreTeam() {
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: hoveredMember === member.name ? 1 : 0 }}
-                      className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-6 h-6 md:w-8 md:h-8 bg-primary rounded-full flex items-center justify-center shadow-lg"
+                      className="absolute -top-1 right-16 md:-top-2 md:right-16 w-6 h-6 md:w-8 md:h-8 bg-primary rounded-full flex items-center justify-center shadow-lg"
                     >
                       <Award className="w-3 h-3 md:w-4 md:h-4 text-white" />
                     </motion.div>
@@ -228,5 +205,5 @@ export function CoreTeam() {
         </div>
       </div>
     </section>
-  )
+  );
 }

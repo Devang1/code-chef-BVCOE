@@ -55,7 +55,7 @@ export default function ExpandableCardDemo() {
               translateY: -4,
               boxShadow: "0 12px 24px rgba(0, 0, 0, 0.3)",
             }}
-            className={`relative rounded-2xl border border-white/[0.1] p-2 backdrop-blur bg-white/5 overflow-hidden group transition-all duration-300 ${
+            className={`relative rounded-2xl border border-white/[0.1] p-4 backdrop-blur bg-white/5 overflow-hidden group transition-all duration-300 ${
               index === 0 ? "scale-105 z-10 shadow-xl" : ""
             }`}
           >

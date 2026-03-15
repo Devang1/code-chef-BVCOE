@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
@@ -32,8 +33,10 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
     shortcut: '/favicon-32x32.png',
   },
-  themeColor: '#ffffff',
 };
+export const viewport: Viewport = {
+  themeColor: '#11151E',
+}
 
 export default function RootLayout({
   children,

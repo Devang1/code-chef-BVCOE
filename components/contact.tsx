@@ -1,9 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Mail, Phone, MapPin, Send, Github, Instagram, Linkedin, CheckCircle, Sparkles } from "lucide-react"
-import emailjs from '@emailjs/browser'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Instagram,
+  Linkedin,
+  CheckCircle,
+  Sparkles,
+} from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -11,16 +21,16 @@ export function Contact() {
     email: "",
     subject: "",
     message: "",
-  })
-  const [focusedField, setFocusedField] = useState<string | null>(null)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  });
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError(null)
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
 
     try {
       // Initialize EmailJS (replace with your public key)
@@ -35,29 +45,31 @@ export function Contact() {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          // to_email: 'devangshukla119@gmail.com'
+          // to_email: 'codechefbvcoe@gmail.com', // Optional: specify recipient email if not set in template
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+      );
 
-      setIsSubmitted(true)
-      setFormData({ name: "", email: "", subject: "", message: "" })
-      
-      setTimeout(() => setIsSubmitted(false), 3000)
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      setTimeout(() => setIsSubmitted(false), 3000);
     } catch (err) {
-      console.error('Email failed to send:', err)
-      setError('Failed to send message. Please try again later.')
+      console.error("Email failed to send:", err);
+      setError("Failed to send message. Please try again later.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <section
@@ -105,9 +117,12 @@ export function Contact() {
           >
             <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-primary animate-bounce-slow" />
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-bold font-poppins text-white mb-4 md:mb-6">Get In Touch</h2>
+          <h2 className="text-3xl md:text-5xl font-bold font-poppins text-white mb-4 md:mb-6">
+            Get In Touch
+          </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
-            Ready to join our coding community? Let's connect and build something amazing together!
+            Ready to join our coding community? Let's connect and build
+            something amazing together!
           </p>
         </motion.div>
 
@@ -135,6 +150,7 @@ export function Contact() {
                   icon: <Mail className="w-5 h-5 md:w-6 md:h-6" />,
                   title: "Email",
                   info: "codechefbvcoe@gmail.com",
+                  href: "mailto:codechefbvcoe@gmail.com",
                   color: "from-blue-500 to-cyan-500",
                   delay: 0.8,
                 },
@@ -153,7 +169,7 @@ export function Contact() {
                   transition={{ duration: 0.6, delay: contact.delay }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex items-start gap-4 md:gap-6 group cursor-pointer"
+                  className="flex items-start gap-4 md:gap-6 group"
                 >
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 360 }}
@@ -166,9 +182,18 @@ export function Contact() {
                     <h4 className="font-bold font-poppins text-white text-base md:text-lg mb-1 md:mb-2 group-hover:text-primary transition-colors">
                       {contact.title}
                     </h4>
-                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors whitespace-pre-line text-sm md:text-base break-words">
-                      {contact.info}
-                    </p>
+                    {contact.href ? (
+                      <a
+                        href={contact.href}
+                        className="text-gray-400 group-hover:text-gray-300 transition-colors whitespace-pre-line text-sm md:text-base break-words"
+                      >
+                        {contact.info}
+                      </a>
+                    ) : (
+                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors whitespace-pre-line text-sm md:text-base break-words">
+                        {contact.info}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -182,11 +207,23 @@ export function Contact() {
               viewport={{ once: true }}
               className="mt-10 md:mt-12"
             >
-              <h4 className="text-lg md:text-xl font-bold font-poppins text-white mb-4 md:mb-6">Follow Us</h4>
+              <h4 className="text-lg md:text-xl font-bold font-poppins text-white mb-4 md:mb-6">
+                Follow Us
+              </h4>
               <div className="flex gap-3 md:gap-4">
                 {[
-                  { icon: Linkedin, href: "https://www.linkedin.com/company/codechef-bvcoe-chapter/", color: "hover:text-blue-400", bg: "hover:bg-blue-900/20" },
-                  { icon: Instagram, href: "https://www.instagram.com/codechef_bvcoe", color: "hover:text-pink-400", bg: "hover:bg-pink-900/20" },
+                  {
+                    icon: Linkedin,
+                    href: "https://www.linkedin.com/company/codechef-bvcoe-chapter/",
+                    color: "hover:text-blue-400",
+                    bg: "hover:bg-blue-900/20",
+                  },
+                  {
+                    icon: Instagram,
+                    href: "https://www.instagram.com/codechef_bvcoe",
+                    color: "hover:text-pink-400",
+                    bg: "hover:bg-pink-900/20",
+                  },
                 ].map(({ icon: Icon, href, color, bg }, i) => (
                   <motion.a
                     key={i}
@@ -232,9 +269,24 @@ export function Contact() {
                     className="space-y-4 md:space-y-6"
                   >
                     {[
-                      { name: "name", label: "Full Name", type: "text", placeholder: "Your full name" },
-                      { name: "email", label: "Email Address", type: "email", placeholder: "your.email@example.com" },
-                      { name: "subject", label: "Subject", type: "text", placeholder: "What's this about?" },
+                      {
+                        name: "name",
+                        label: "Full Name",
+                        type: "text",
+                        placeholder: "Your full name",
+                      },
+                      {
+                        name: "email",
+                        label: "Email Address",
+                        type: "email",
+                        placeholder: "your.email@example.com",
+                      },
+                      {
+                        name: "subject",
+                        label: "Subject",
+                        type: "text",
+                        placeholder: "What's this about?",
+                      },
                     ].map((field, index) => (
                       <motion.div
                         key={field.name}
@@ -277,7 +329,10 @@ export function Contact() {
                       transition={{ duration: 0.6, delay: 1.3 }}
                       viewport={{ once: true }}
                     >
-                      <label htmlFor="message" className="block text-sm font-medium font-poppins text-gray-300 mb-2">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium font-poppins text-gray-300 mb-2"
+                      >
                         Message
                       </label>
                       <motion.textarea
@@ -329,7 +384,11 @@ export function Contact() {
                           >
                             <motion.div
                               animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                              transition={{
+                                duration: 1,
+                                repeat: Number.POSITIVE_INFINITY,
+                                ease: "linear",
+                              }}
                               className="w-4 h-4 md:w-5 md:h-5 border-2 border-white border-t-transparent rounded-full"
                             />
                             <span>Sending...</span>
@@ -388,5 +447,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

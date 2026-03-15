@@ -62,7 +62,7 @@ export function FacultyMentor() {
                 viewport={{ once: true }}
                 className="flex-shrink-0"
               >
-                <motion.div whileHover={{ scale: 1.1, rotate: 5 }} className="relative">
+                <motion.div whileHover={{ scale: 1.1 }} className="relative">
                   <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow">
                     <img src="/mentor.jpg" alt="" className="w-full h-full object-cover rounded-full" />
                   </div>

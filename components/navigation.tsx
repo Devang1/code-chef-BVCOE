@@ -10,7 +10,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { name: "Hero", href: "#hero" },
+    { name: "Home", href: "#hero" },
     { name: "Faculty", href: "#faculty" },
     { name: "Vision", href: "#vision" },
     { name: "Team", href: "#team" },
@@ -22,7 +22,7 @@ export function Navigation() {
     setIsOpen(false);
     setTimeout(() => {
       const element = document.querySelector(href);
-      if (element) {  
+      if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }, 300);
@@ -33,7 +33,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 md:h-16">
           {/* Logo */}
-          <Link href="/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+          <Link href="/" target="_self" rel="noopener noreferrer" className="flex items-center space-x-2">
             <Image
                 src="/CodeChef_Logo.svg.png"
                 alt="CodeChef Logo"

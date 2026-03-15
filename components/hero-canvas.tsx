@@ -1,21 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useDroppable } from "@dnd-kit/core"
-import { HeroElementRenderer } from "./hero-element-renderer"
-import type { HeroElement } from "./hero-builder"
-import { Layout, ImageIcon, Video } from "lucide-react"
+import { useDroppable } from "@dnd-kit/core";
+import { HeroElementRenderer } from "./hero-element-renderer";
+import type { HeroElement } from "./hero-builder";
+import { Layout, ImageIcon, Video } from "lucide-react";
+import { useMemo } from "react";
 
 interface HeroCanvasProps {
-  elements: HeroElement[]
-  selectedElement: HeroElement | null
-  onSelectElement: (element: HeroElement) => void
-  onUpdateElement: (id: string, props: Record<string, any>) => void
-  onDeleteElement: (id: string) => void
-  isEditMode: boolean
-  backgroundColor: string
-  onBackgroundColorChange: (color: string) => void
+  elements: HeroElement[];
+  selectedElement: HeroElement | null;
+  onSelectElement: (element: HeroElement) => void;
+  onUpdateElement: (id: string, props: Record<string, any>) => void;
+  onDeleteElement: (id: string) => void;
+  isEditMode: boolean;
+  backgroundColor: string;
+  onBackgroundColorChange: (color: string) => void;
 }
 
 export function HeroCanvas({
@@ -28,24 +29,36 @@ export function HeroCanvas({
   backgroundColor,
   onBackgroundColorChange,
 }: HeroCanvasProps) {
-  const { isOver, setNodeRef } = useDroppable({ id: "hero-canvas" })
+  const { isOver, setNodeRef } = useDroppable({ id: "hero-canvas" });
 
-  const backgroundElements = elements.filter((el) => el.props.isBackground)
-  const foregroundElements = elements.filter((el) => !el.props.isBackground)
+  const backgroundElements = elements.filter((el) => el.props.isBackground);
+  const foregroundElements = elements.filter((el) => !el.props.isBackground);
 
-  const handleBackgroundMediaUpload = (elementId: string, event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+  const handleBackgroundMediaUpload = (
+    elementId: string,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = (e) => {
-        const result = e.target?.result as string
+        const result = e.target?.result as string;
         if (result) {
-          onUpdateElement(elementId, { src: result })
+          onUpdateElement(elementId, { src: result });
         }
-      }
-      reader.readAsDataURL(file)
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
+
+  const particles = useMemo(() => {
+    return Array.from({ length: 15 }).map(() => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 3,
+      duration: 3 + Math.random() * 2,
+    }));
+  }, []);
 
   return (
     <div className="flex-1 relative min-h-screen lg:min-h-auto">
@@ -58,13 +71,14 @@ export function HeroCanvas({
         ${isEditMode ? "border-2 border-dashed border-gray-700 lg:border-gray-700" : ""}
       `}
         style={{
-          backgroundColor: backgroundElements.length === 0 ? backgroundColor : "transparent",
+          backgroundColor:
+            backgroundElements.length === 0 ? backgroundColor : "transparent",
           paddingBottom: isEditMode ? "20rem" : "2rem", // Extra padding on mobile for customizer
         }}
       >
         {/* Background Elements */}
         {backgroundElements.map((element) => {
-          const backgroundSrc = element.props.src?.trim()
+          const backgroundSrc = element.props.src?.trim();
 
           // Show upload prompt for background elements without source
           if (!backgroundSrc && isEditMode) {
@@ -73,12 +87,16 @@ export function HeroCanvas({
                 key={`bg-${element.id}`}
                 className="absolute inset-0 w-full h-full bg-gray-900/50 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-800/50 transition-all group border-2 border-dashed border-gray-600 hover:border-[#1E90FF]/50"
                 onClick={(e) => {
-                  e.stopPropagation()
-                  const input = document.createElement("input")
-                  input.type = "file"
-                  input.accept = element.type === "image" ? "image/*" : "video/mp4,video/webm,video/ogg"
-                  input.onchange = (event) => handleBackgroundMediaUpload(element.id, event as any)
-                  input.click()
+                  e.stopPropagation();
+                  const input = document.createElement("input");
+                  input.type = "file";
+                  input.accept =
+                    element.type === "image"
+                      ? "image/*"
+                      : "video/mp4,video/webm,video/ogg";
+                  input.onchange = (event) =>
+                    handleBackgroundMediaUpload(element.id, event as any);
+                  input.click();
                 }}
               >
                 {element.type === "image" ? (
@@ -90,13 +108,15 @@ export function HeroCanvas({
                   Click to upload background {element.type}
                 </p>
                 <p className="text-gray-400 text-xs md:text-sm lg:text-base text-center px-4 md:px-6 font-poppins">
-                  {element.type === "image" ? "JPG, PNG, GIF up to 10MB" : "MP4, WebM, OGG up to 50MB"}
+                  {element.type === "image"
+                    ? "JPG, PNG, GIF up to 10MB"
+                    : "MP4, WebM, OGG up to 50MB"}
                 </p>
               </div>
-            )
+            );
           }
 
-          if (!backgroundSrc) return null
+          if (!backgroundSrc) return null;
 
           return (
             <div
@@ -112,12 +132,19 @@ export function HeroCanvas({
                 />
               )}
               {element.type === "video" && (
-                <video src={backgroundSrc} className="w-full h-full object-cover" autoPlay muted loop playsInline />
+                <video
+                  src={backgroundSrc}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
               )}
               {/* Dark overlay for better text readability */}
               <div className="absolute inset-0 bg-black/40" />
             </div>
-          )
+          );
         })}
 
         {/* Drop zone indicator */}
@@ -164,7 +191,7 @@ export function HeroCanvas({
         {backgroundElements.length === 0 && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Animated background particles */}
-            {[...Array(15)].map((_, i) => (
+            {/* {[...Array(15)].map((_, i) => (
               <div
                 key={i}
                 className="absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-[#1E90FF]/30 rounded-full animate-float"
@@ -173,6 +200,18 @@ export function HeroCanvas({
                   top: `${Math.random() * 100}%`,
                   animationDelay: `${Math.random() * 3}s`,
                   animationDuration: `${3 + Math.random() * 2}s`,
+                }}
+              />
+            ))} */}
+            {particles.map((p, i) => (
+              <div
+                key={i}
+                className="absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-[#1E90FF]/30 rounded-full animate-float"
+                style={{
+                  left: `${p.left}%`,
+                  top: `${p.top}%`,
+                  animationDelay: `${p.delay}s`,
+                  animationDuration: `${p.duration}s`,
                 }}
               />
             ))}
@@ -191,5 +230,5 @@ export function HeroCanvas({
         )}
       </div>
     </div>
-  )
+  );
 }
