@@ -52,7 +52,7 @@ export function HeadsAndViceHeads() {
       head: {
         name: "Devang",
         role: "Technical Head",
-        image: "/dsa/Devang.jpg", // Example image path
+        image: "/dsa/devang.png", // Example image path
       },
       head2: {
         name: "Sambhav Gupta",

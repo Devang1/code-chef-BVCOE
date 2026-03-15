@@ -34,7 +34,6 @@ export function CoreTeam() {
       name: "Richa",
       role: "Event Management Lead",
       image: "/event/Richa.webp?height=200&width=200",
-      linkedin: "sarahwilson",
       color: "from-green-500 to-teal-500",
     },
     {
@@ -50,7 +49,7 @@ export function CoreTeam() {
       role: "Sponsorship Lead",
       image: "/sponsorship/Abhishek.jpg?height=200&width=200",
       linkedin:
-        "https://www.linkedin.com/in/aadarsh-jha-90a801297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "https://www.linkedin.com/in/akj001?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       color: "from-green-500 to-teal-500",
     },
   ];
@@ -173,23 +172,17 @@ export function CoreTeam() {
 
                   {/* Social Links */}
                   <div className="flex justify-center gap-2 md:gap-3">
-                    {[
-                      {
-                        icon: Linkedin,
-                        href: `${member.linkedin}`,
-                        color: "hover:text-blue-400",
-                      },
-                    ].map(({ icon: Icon, href, color }, i) => (
+                    {member.linkedin && (
                       <motion.a
-                        key={i}
-                        href={href}
+                        href={member.linkedin}
+                        target="_blank"
                         whileHover={{ scale: 1.2, y: -2 }}
                         whileTap={{ scale: 0.9 }}
-                        className={`p-2 bg-gray-800 rounded-lg transition-all duration-300 text-gray-400 ${color} hover:shadow-lg`}
+                        className="p-2 bg-gray-800 rounded-lg transition-all duration-300 text-gray-400 hover:text-blue-400 hover:shadow-lg"
                       >
-                        <Icon className="w-3 h-3 md:w-4 md:h-4" />
+                        <Linkedin className="w-3 h-3 md:w-4 md:h-4" />
                       </motion.a>
-                    ))}
+                    )}
                   </div>
                 </div>
 
